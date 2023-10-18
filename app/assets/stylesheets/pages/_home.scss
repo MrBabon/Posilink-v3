@@ -1,1 +1,74 @@
-// Specific CSS for your home-page
+.phrase-couleur {
+    color: #01679c;
+    font-weight: 600;
+}
+.bold-h3 {
+  font-weight: 500;
+}
+.home-style {
+  margin: 100px 0 100px 0;
+}
+
+.titre-bold {
+    font-weight: 900;
+}
+
+body {
+  background:#FFFBE9;
+}
+
+h2, p {
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 24px;
+}
+
+.banner {
+  padding: 100px 0 100px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+
+// SEARCH BAR CHRISTOPHE
+
+.barre-recherche {
+  margin: 0 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.recherche-input {
+  border-radius: 100px 0 0 100px;
+  border: 0 1px 0 0 solid black;
+}
+
+.bouton-search {
+  border-radius: 0 100px 100px 0;
+}
+
+.bouton-search:hover {
+  color: #fff;
+  background-color: #CEAB93;
+  border-radius: 0 100px 100px 0;
+}

@@ -1,0 +1,41 @@
+.container-orga {
+    display: flex;
+}
+#map-event {
+    height: 100vh;
+    width: 35%;
+    position: sticky;
+    top: 0;
+}
+
+
+.cards-orga {
+    width: 65%;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    padding: 0 13px 13px 13px;
+
+}
+
+.card-orga {
+    background-color: #c9c2c2;
+    margin: 0 30px 0 30px;
+    padding: 10px;
+}
+
+@media(max-width: 992px) {
+    .cards-orga {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+    .container-orga {
+        display: block;
+    }
+    #map-event {
+        height: 300px;
+        width: 100%;
+        margin-top: 16px;
+    }
+  }

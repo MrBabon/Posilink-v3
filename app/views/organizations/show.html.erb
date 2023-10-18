@@ -1,0 +1,69 @@
+<% content_for :meta_title, "#{@organization.name} • Posilink" %>
+<% content_for :meta_description, "Les derniers évènements de #{@organization.name}" %>
+<% content_for :meta_image, rails_blob_path(@organization.avatar, disposition: "attachment") %>
+
+
+<div class="organization-banner">
+  <section class="dark">
+    <div class="container py-4">
+      <article class="postcard dark blue ">
+        <div class="postcard__img_link" href="#">
+          <img class="postcard__img" src="<%= rails_blob_path(@organization.avatar, disposition: "attachment") %>" alt="Image <%= @organization.name %>" />
+        </div>
+        <div class="postcard__text">
+          <h1 class="postcard__title blue"> <%= @organization.name %></h1>
+          <div class="postcard__subtitle small"></div>
+          <div class="postcard__bar"></div>
+          <div class=""> <%= @organization.description %></div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i><%= @organization.address %></li>
+            <li class="tag__item"><a href="tel:<%= @organization.phone %>"><i class="fas fa-phone mr-2"></i><%= @organization.phone %></a></li>
+            <li class="tag__item"><a href="mailto:<%= @organization.email %>"> <i class="fas fa-envelope mr-2"></i><%= @organization.email %></a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="container">
+    <div class="btn-wrap">
+      <div class='btn-left'>
+        <div class='prev-wrap'>
+          <%= link_to :back, class: "btn-test" do %>
+            <i class="fa fa-angle-left"></i> Précédent
+          <% end %>
+        </div>
+          <% if @organization.directors.present? && current_user == @organization.directors.first.user %>
+            <%= link_to edit_organization_path(@organization), class: "bouton-ac" do %>
+              Modifier mon association
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+  <h2 class="mb-5"> Nos <span class="phrase-couleur">événements</span></h2>
+  <div class="container-orga">
+    <div class="cards-orga">
+      <% @events.each do |event| %>
+                <div class="card card-ac">
+                  <% if event.picture.attached? %>
+                    <img src="<%= rails_blob_path event.picture %>" alt="Événement" class="object-fit-cover img-fluid">
+                  <% end %>
+                  <div class="card-body">
+                      <p class="date-start">Le <%= event.start_time.strftime('%d %m %Y') %><br>de <%= event.start_time.strftime('%H:%M')%> à <%= event.end_time.strftime('%H:%M')%><p>
+                      <h3 class="card-title titre-carte"><%= event.title %></h3>   
+                  </div>
+                  <p class="para-card">Adresse</p>
+                  <p class="para-card"><%= event.address %></p>
+                  <div class="card-bottom">
+                    <a class="bouton-ac" onclick="window.location.href='<%= event_path(event) %>'">Voir plus <i class="fa fa-arrow-right"></i></a>
+                  </div>
+                </div>
+      <% end %>
+    </div>
+    <div id="map-event"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+</div>

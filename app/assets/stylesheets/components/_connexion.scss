@@ -1,0 +1,30 @@
+.label-left{
+	display: flex;
+	text-align: start;
+}
+
+.gradient-custom-2 {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom, #00284c, #2a356d,#01679c, #01989f, #00e5bc);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom, #00284c, #2a356d,#01679c, #01989f, #00e5bc);
+}
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+	  /* Chrome 10-25, Safari 5.1-6 */
+		background: -webkit-linear-gradient(to right, #00284c, #2a356d,#01679c, #01989f, #00e5bc);
+
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: linear-gradient(to right, #00284c, #2a356d,#01679c, #01989f, #00e5bc);
+  }
+  }

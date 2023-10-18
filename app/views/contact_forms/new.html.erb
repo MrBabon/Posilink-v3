@@ -1,0 +1,50 @@
+<% content_for :meta_title, "Inscription d'association • Posilink" %>
+<% content_for :meta_description, "Demande d'inscription d'association" %>
+
+<div class="container">
+<%= form_for :contact_form, url: contact_forms_path, method: :post, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name, "Prénom" %>
+    <%= f.text_field :first_name, required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, "Nom de famille" %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "Adresse e-mail de votre association" %>
+    <%= f.email_field :email, required: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :recto_id, "Pièce d'identité (recto)" %>
+    <%= f.file_field :recto_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :verso_id, "Pièce d'identité (verso)" %>
+    <%= f.file_field :verso_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :receipt, "Récepissé de création" %>
+    <%= f.file_field :receipt, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rna_number, "Numéro RNA" %>
+    <%= f.text_field :rna_number, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, "Message" %>
+    <%= f.text_area :message, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Envoyer", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

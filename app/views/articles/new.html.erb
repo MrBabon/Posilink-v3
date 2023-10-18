@@ -1,0 +1,25 @@
+<% content_for :meta_title, "Article • Posilink" %>
+<% content_for :meta_description, "Nouvel article" %>
+
+<div class="container">
+  <%= form_for [@organization, @event, @article] do |f| %>
+    <div class="form-group">
+      <%= f.label :title, class: "control-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content, class: "control-label" %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :picture, class: "control-label" %>
+      <%= f.file_field :picture, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Créer l'article", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

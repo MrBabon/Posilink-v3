@@ -1,0 +1,45 @@
+// SCROLL-TOP
+.transition-top {
+  height: 40px;
+  width: 40px;
+  background: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 10px;
+  bottom: 85px;
+  border: 1px solid #EEE3CB;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.scroll-top {
+    height: 40px;
+    width: 40px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 10px;
+    bottom: 85px;
+    border: 1px solid #EEE3CB;
+    opacity: 1;
+    transition: opacity 2.5s ease;
+  }
+  
+  .scroll-top span {
+    font-size: 50px;
+  }
+  .scroll-top span:hover {
+    font-size: 60px;
+  }
+  
+  
+@media(max-width: 560px) {
+  .scroll-laptop {
+    display: none;
+  }
+}

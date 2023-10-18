@@ -1,0 +1,16 @@
+<h2>Nouveau message provenant de PosiLink</h2>
+  <p>Vous avez reçu un nouveau message de contact :</p>
+
+  <ul>
+    <li><strong>Nom:</strong> <%= @contact_form.first_name %> <%= @contact_form.last_name %></li>
+    <li><strong>E-mail:</strong> <%= @contact_form.email %></li>
+    <li><strong>Pièce d'identité (recto):</strong></li>
+    <li><img src="<%= rails_blob_url(@contact_form.recto_id) %>"></li>
+    <li><strong>Pièce d'identité (verso):</strong></li>
+    <li><img src="<%= rails_blob_url(@contact_form.verso_id) %>"></li>
+    <li><strong>Récepissé de création:</strong></li>
+    <li><%= link_to 'Télécharger le récépissé de création', rails_blob_url(@contact_form.receipt) %></li>
+    <li><strong>Numéro RNA:</strong> <%= @contact_form.rna_number %></li>
+    <li><strong>Message:</strong> <%= @contact_form.message %></li>
+
+  </ul>

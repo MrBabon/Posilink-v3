@@ -1,0 +1,121 @@
+<% content_for :meta_title, "Mon association • Posilink" %>
+<% content_for :meta_description, "Mettre en valeur votre association avec Posilink" %>
+
+<div class="container">
+    <div class='prev-wrap pt-3'>
+        <%= link_to :back, class: "btn-test" do %>
+            <i class="fa fa-angle-left"></i> Précédent
+        <% end %>
+    </div>
+    <section class="section-profil px-2">
+        <div class="profil-page">
+            <% if @organization.avatar.freeze %>
+                <%= image_tag url_for(@organization.avatar), alt: "Avatar de #{@organization.name}", class: "profil-avatar" %>
+            <% else %>
+            <%= image_tag "cover.png", width: 100, height: 100, alt: "Avatar par défaut", class: "profil-avatar" %>
+            <% end %>
+        </div>
+        <div class="case-profil ps-5">
+            <div class="px-2 pt-1">
+                <h5>Modifier les informations de votre association.</h5>
+            </div>
+        </div>
+        <div class="container">
+            <%= form_for @organization, url: organization_path(@organization), method: :patch, html: { multipart: true } do |f| %>
+                <div class="form-group">
+                    <%= f.label :description %>
+                    <%= f.text_area :description, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :address, "Adresse"%>
+                    <%= f.text_field :address, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :avatar, "Photo de l'association" %>
+                    <%= f.file_field :avatar, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.submit "Enregistrer", class: "btn bouton-ac" %>
+                </div>
+            <% end %>
+        </div>
+    </section>
+    <br>
+    <section class="section-profil">
+        <div class="container">
+            <% if @events.any? { |event| event.id.present? } %>
+                <h2>Événements de l'association</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Article</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @events.each do |event| %>
+                            <% if event.id.present? %>
+                                <tr>
+                                <td><%= event.title.truncate(20, omission: '..') %></td>
+                                <td><%= event.articles.count %></th>
+                                <td><%= event.start_time&.strftime('%d.%m à %H:%M') %></td>
+                                <td><%= event.end_time&.strftime('%d.%m à %H:%M') %></td>
+                                <td>
+                                    <%= link_to edit_organization_event_path(@organization, event), class: 'btn btn-primary btn-sm' do %>
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    <% end %>
+                                    <%= link_to new_organization_event_article_path(@organization, event), class: 'btn btn-primary' do %>
+                                        <i class="fa-regular fa-newspaper"></i>
+                                    <% end %>
+                                    <%= link_to organization_event_path(@organization, event), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr?"}, class: 'btn btn-danger' do %>
+                                        <i class="fa-regular fa-circle-xmark"></i>
+                                    <% end %>
+                                </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% else %>
+                <p>Aucun événement trouvé pour cette association.</p>
+            <% end %>
+        </div>
+        <div class="">
+            <h2>Créer un nouvel évènement</h2>
+            <%= form_for(@new_event, url: create_event_organization_path(@organization), method: :post, html: { multipart: true }) do |f| %>
+                <div class="form-group">
+                    <%= f.label :title, "Titre de l'événement" %>
+                    <%= f.text_field :title, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :picture, "Photo de l'évènement" %>
+                    <%= f.file_field :picture, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :description, "Description" %>
+                    <%= f.text_area :description, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :address, "Adresse" %>
+                    <%= f.text_field :address, required: true, class: "form-control" %>
+                </div> 
+                <div class="form-group">
+                    <%= f.label :start_time, "Date et heure de début" %>
+                    <%= f.datetime_local_field :start_time, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :end_time, "Date et heure de fin" %>
+                    <%= f.datetime_local_field :end_time, required: true, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.submit "Créer l'événement", class: "btn bouton-ac" %>
+                </div>
+            <% end %>
+        </div>
+    </section>
+</div>
+
+

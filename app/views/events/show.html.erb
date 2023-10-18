@@ -1,0 +1,54 @@
+<% content_for :meta_title, "Les prochains évènements • Posilink" %>
+<% content_for :meta_description, "Trouvez votre prochain évènement associatif avec Posilink" %>
+
+
+<div class="events-container">
+  <div class="events-content">
+    <div class='prev-wrap'>
+      <%= link_to :back do %>
+        <div class="btn-test"><i class="fa fa-angle-left"></i> Précédent </div>
+      <% end %>
+    </div>
+    <h1><strong><%= @event.title %></strong></h1>
+    <p><%= @event.description %></p>
+
+    <div class="article-card event-info">
+    <p><i class="fa-solid fa-calendar-days"></i> <%= @event.start_time.strftime("%d-%m-%Y") %></p>
+    <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @event.address %></p>
+    </div>
+
+
+    <% if @participation %>
+      <% if @event.articles.any? %>
+        <div class="article-card">
+          <h2>Articles</h2>
+          <% @event.articles.each do |article| %>
+            <div class="card-event" data-controller="read-more" data-read-more-more-text-value="Lire plus" data-read-more-less-text-value="Lire moins">
+              <h3><strong><%= article.title %></strong></h3>
+              <p class="my-content" data-read-more-target="content"><%= sanitize article.content %></p>
+              <div class="read-more">
+                <a class="bouton-ac" data-action="click->read-more#toggle" data-read-more-target="button">Lire plus</a>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to "Se désinscrire de l'évènement", event_participation_path(@event, @participation), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr?"}, class: "bouton-ac"%>
+      </div>
+    <% else %>
+      <%= simple_form_for([@event], url: participations_path(@event), method: :post) do |f| %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <div class="form-actions">
+          <%= f.button :submit, value: "S'inscrire à l'évènement", class: "bouton-ac" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="events-map"
+    data-controller="map"
+    data-map-markers-value="<%= [@marker].to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
