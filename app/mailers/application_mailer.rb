@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "contact@dannacode.com"
+  default from: "c.marcouly@creactive06.fr"
   layout "mailer"
 end
