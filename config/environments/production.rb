@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
-  config.action_mailer.default_url_options = { host: "https://my-task-    tracker.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "www.dannacode.com" }
   # Settings specified here will take precedence over those in config/application.rb.
   ##########################################################
   ############### POUR FORMULAIRE DE CONTACT ###############
