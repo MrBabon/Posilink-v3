@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "app@posilink.com"
+  default from: "contact@dannacode.com"
   layout "mailer"
 end
