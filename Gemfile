@@ -41,6 +41,7 @@ gem "cloudinary"
 gem "simple_calendar", "~> 2.4"
 gem "pg_search"
 gem 'letter_opener', group: :development
+gem 'postmark-rails'
 #######################################
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
