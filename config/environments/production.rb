@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "https://posilink-9ec0a6dd0c07.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: "https://my-task-    tracker.herokuapp.com" }
   # Settings specified here will take precedence over those in config/application.rb.
   ##########################################################
   ############### POUR FORMULAIRE DE CONTACT ###############
