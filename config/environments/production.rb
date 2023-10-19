@@ -1,20 +1,12 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "https://posilink-9ec0a6dd0c07.herokuapp.com/" }
   # Settings specified here will take precedence over those in config/application.rb.
   ##########################################################
   ############### POUR FORMULAIRE DE CONTACT ###############
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'dannacode.com', # Remplacez par votre propre domaine (peut être fictif)
-    user_name: 'posilinkcontact@gmail.com', # Votre adresse e-mail Gmail
-    password: '#posilink06560PL', # Le mot de passe de votre compte Gmail
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+
   ##########################################################
   ##########################################################
   # Code is not reloaded between requests.
